@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="H:/compitition/Programming Foundation Databases/Resturant Database EX/Returant Database EX.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="505"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="0,0:"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1">CREATE TABLE Customers(
+CustomerID int(6) NOT NULL,
+FirstName varchar(200) NOT NULL,
+LastName varchar(200) NOT NULL ,
+Phone varchar(20) NOT NULL,
+Email varchar(20) ,
+Address varchar(200),
+City varchar(20),
+StateCode int(2),
+PRIMARY KEY(CustomerID)
+
+)
+CREATE TABLE Dishes(
+DishID int(6) NOT NULL,
+Name varchar(200) NOT NULL,
+Description varchar(500) Not NULL,
+Price decimal(3,2) NOT NULL,
+PRIMARY KEY(DishID)
+
+)
+CREATE TABLE CustomersDishes(
+CusDishID int(6) NOT NULL,
+CustomerID int(6) REFERENCES Customers(CustomerID),
+FavoriteDish int(6) REFERENCES Dishes(DishID),
+PRIMARY KEY(CusDishID)
+)
+CREATE TABLE Orders(
+OrderID int(6) NOT NULL,
+CustomerID int(6) REFERENCES Customers(CustomerID),
+OrderDate datetime NOT null,
+PRIMARY KEY(OrderID)
+)
+CREATE TABLE OrdersDishes(
+OrDishID int(6) NOT NULL,
+OrderID int(6) REFERENCES Orders(OrderID),
+FavoirtDish int(6) REFERENCES Dishes(DishID),
+PRIMARY KEY(OrDishID)
+)
+CREATE TABLE Reservations(
+ReservationID int(6) NOT NULL,
+CustomerID int(6) REFERENCES Customers(CustomerID),
+Description varchar(500) NOT NULL,
+ReservationDate datetime NOT NULL,
+PRIMARY KEY(ReservationID)
+
+)
+CREATE TABLE Events(
+Name varchar(200) NOT NULL,
+Description varchar(500) NOT NULL,
+EventDate datetime NOT NULL,
+PRIMARY KEY(Name)
+)
+</sql><current_tab id="0"/></tab_sql></sqlb_project>
